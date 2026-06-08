@@ -90,11 +90,15 @@ chain = parallel | prompt | model
 
 st.title("Spider ML Task-1")
 st.divider()
-st_query = st.text_input("Ask your Question here")
-st_go=st.button("Go")
 
-if st_go or st_query:
-    result = chain.invoke(st_query)
+@st.fragment
+def st_queries():
+    st_query = st.text_input("Ask your Question here")
+    st_go=st.button("Go")
+
+    if st_go or st_query:
+        result = chain.invoke(st_query)
 
 
-    st.write(result.content)
+        st.write(result.content)
+st_queries()
